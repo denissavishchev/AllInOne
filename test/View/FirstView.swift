@@ -2,7 +2,7 @@ import SwiftUI
 
 
 
-struct ContentView: View {
+struct FirstView: View {
     @State private var toggles: [Bool] = [true, false, false, false]
     @State private var rating = 3
     
@@ -96,7 +96,7 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    FirstView()
 }
 
 
