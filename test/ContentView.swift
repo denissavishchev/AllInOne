@@ -4,6 +4,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var toggles: [Bool] = [true, false, false, false]
+    @State private var rating = 3
     
     var body: some View {
         GeometryReader{ geometry in
@@ -44,6 +45,13 @@ struct ContentView: View {
                     endPoint: .bottomTrailing))
                 .cornerRadius(18)
                 .padding(EdgeInsets(top: 12, leading: 12, bottom: 0, trailing: 12))
+                
+                VStack {
+                    Text("\(rating)")
+                        .bold()
+                    RatingPicker()
+                }
+                
                 HStack{
                     TileView(
                         name: "May 30, 2022",
