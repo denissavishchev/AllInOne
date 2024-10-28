@@ -2,7 +2,7 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State var selectedTab = "Globe"
+    @State var selectedTab = "Home"
     let tabs = ["Globe", "Home", "Settings", "Profile"]
     
     init() {
@@ -14,8 +14,13 @@ struct ContentView: View {
             TabView(selection: $selectedTab){
                 FirstView()
                     .tag("Globe")
-                Text("Home")
-                    .tag("Home")
+                NavigationStack{
+                    ProductView()
+                        .navigationDestination(for: Product.self){ product in
+                        ProductDetailView(product: product)
+                        }
+                }
+                .tag("Home")
                 Text("Settings")
                     .tag("Settings")
                 Text("Profile")
@@ -32,7 +37,7 @@ struct ContentView: View {
             .padding(.top, 20)
             .padding(.bottom, 5)
             .frame(maxWidth: .infinity)
-            .background(.gray)
+            .background(.orange)
         }
     }
 }
@@ -75,7 +80,7 @@ struct TabBarItem: View {
             .opacity(selected == tab ? 1 : 0.7)
             .padding(.vertical, 8)
             .padding(.horizontal, 18)
-            .background(selected == tab ? .white : .gray)
+            .background(selected == tab ? .white : .orange)
             .clipShape(Capsule())
         }
         
