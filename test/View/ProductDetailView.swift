@@ -3,6 +3,8 @@ import SwiftUI
 struct ProductDetailView: View {
     
     let product: Product
+    @State private var toggle: Bool = false
+    @State private var count: Int = 1
     
     var body: some View {
         ScrollView{
@@ -22,9 +24,7 @@ struct ProductDetailView: View {
                     .padding(.leading, 12)
                     Spacer()
                 }
-                Image(product.image)
-                    .resizable()
-                    .frame(width: 200, height: 200)
+//                ^
                 HStack{
                     Image(systemName: "star.fill")
                         .foregroundColor(.yellow)
@@ -127,7 +127,79 @@ struct ProductDetailView: View {
                     }
                     .contentMargins(.leading, 12, for: .scrollContent)
                     }
+                HStack{
+                    Text("Leave opinion")
+                        .font(.system(size: 22))
+                        .foregroundStyle(Color(.green))
+                        .bold()
+                        
+                }
+                .frame(maxWidth: .infinity, maxHeight: 30)
+                .padding(EdgeInsets(top: 8, leading: 0, bottom: 8, trailing: 0))
+                .background(.white)
+                .cornerRadius(24)
+                .overlay(
+                        RoundedRectangle(cornerRadius: 24)
+                            .stroke(.green, lineWidth: 3))
+                .padding()
+                
+                HStack{
+                    if !toggle { Spacer() }
+                    HStack{
+                        Text(toggle ? "Pcs" : "Kg")
+                            .font(.system(size: 22))
+                            .bold()
+                    }
+                    .frame(width: 200, height: 40)
+                    .background(Color(.lightBlue))
+                    .cornerRadius(10)
+                    .padding(6)
+                    if toggle { Spacer() }
+                }
+                .onTapGesture {
+                    withAnimation(.spring(duration: 0.3)){
+                        toggle.toggle()
+                    }
+                }
+                .frame(maxWidth: .infinity, maxHeight: 100)
+                .background(.gray.opacity(0.4))
+                .cornerRadius(12)
+                .padding()
+                
+                HStack{
+                    Image(systemName: "minus.circle.fill")
+                        .resizable()
+                        .frame(width: 50, height: 50)
+                        .foregroundColor(.white)
+                        .onTapGesture {
+                            withAnimation(.spring(duration: 0.3)){
+                                if count > 1{
+                                    count -= 1
+                                }
+                            }
+                        }
                     Spacer()
+                    Text("\(count) Pcs")
+                        .foregroundStyle(Color(.white))
+                        .font(.system(size: 22))
+                        .bold()
+                    Spacer()
+                    Image(systemName: "plus.circle.fill")
+                        .resizable()
+                        .frame(width: 50, height: 50)
+                        .foregroundColor(.white)
+                        .onTapGesture {
+                            withAnimation(.spring(duration: 0.3)){
+                                count += 1
+                            }
+                        }
+                }
+                .padding(EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5))
+                .frame(width: 200, height: 60)
+                .background(Color(.green))
+                .cornerRadius(40)
+                .padding(6)
+                
                 }
                 .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
                 .background(Color(.lightBlue))
@@ -159,7 +231,7 @@ struct ReviewItem: View {
         }
         .padding(12)
         .frame(width: 220, height: 200)
-        .background(Color(.systemMint))
+        .background(Color(.green))
         .cornerRadius(12)
     }
     private func fillingFor(_ index: Int) -> Bool {
