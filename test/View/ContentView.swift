@@ -2,7 +2,7 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State var selectedTab = "Home"
+    @State var selectedTab = "Settings"
     let tabs = ["Globe", "Home", "Settings", "Profile"]
     
     init() {
@@ -21,7 +21,7 @@ struct ContentView: View {
                         }
                 }
                 .tag("Home")
-                Text("Settings")
+                SettingsView()
                     .tag("Settings")
                 Text("Profile")
                     .tag("Profile")
