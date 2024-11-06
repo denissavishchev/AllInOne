@@ -29,8 +29,47 @@ struct SettingsView: View {
             }
             .frame(width: .infinity, height: 70)
             .padding(.bottom, 20)
-            Text("Slider")
+            CustomSlider()
             Spacer()
+        }
+    }
+}
+
+struct CustomSlider: View {
+    
+    @State var rectangleHight: CGFloat = 150
+    @State var dragOffset: CGFloat = 0
+    @State var Value: Int = 100
+    
+    var body: some View {
+        ZStack(alignment: .bottom){
+            Rectangle()
+                .frame(width: 60, height: 150)
+                .foregroundColor(.gray)
+            Rectangle()
+                .frame(width: 60, height: (min(150, max(0, rectangleHight + dragOffset))))
+        }
+        .gesture(
+            DragGesture()
+                .onChanged({value in
+                    withAnimation{
+                        dragOffset = -value.translation.height * 1.2
+                        let newHeight = min(150, max(0, rectangleHight + dragOffset))
+                        Value = Int((newHeight / 150) * 100)
+                    }
+                })
+                .onEnded({ value in
+                rectangleHight = min(150, max(0, rectangleHight + dragOffset))
+                    dragOffset = 0
+                })
+        )
+        .clipShape(.rect(cornerRadius: 20))
+        .frame(height: 150)
+        .overlay{
+            Text("\(Value)%")
+                .font(.title3)
+                .foregroundStyle(.white)
+                .contentTransition(.numericText())
         }
     }
 }
