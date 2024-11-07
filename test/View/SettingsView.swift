@@ -31,9 +31,12 @@ struct SettingsView: View {
             .padding(.bottom, 20)
             CustomSlider()
             Spacer()
+            CustomCircularBar()
+            Spacer()
         }
     }
 }
+
 
 struct CustomSlider: View {
     
