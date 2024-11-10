@@ -29,14 +29,72 @@ struct SettingsView: View {
             }
             .frame(width: .infinity, height: 70)
             .padding(.bottom, 20)
+            Spacer()
+            RadioButtons()
+            Spacer()
             CustomSlider()
             Spacer()
             CustomCircularBar()
             Spacer()
         }
+        .background(Color.gray)
     }
 }
 
+struct RadioButtons: View {
+    
+    @State private var selectedItem: String = ""
+    let textArray = ["A", "B", "C", "D"]
+    
+    var body: some View {
+        ZStack{
+            Color.gray.ignoresSafeArea()
+            RoundedRectangle(cornerRadius: 15)
+                .fill(
+                    .gray
+                        .shadow(.inner(color: .white.opacity(0.7), radius: 5, x: -5, y: -5))
+                        .shadow(.inner(color: .black.opacity(0.7), radius: 5, x: 5, y: 5))
+                )
+                .frame(width: 320, height: 100)
+                .overlay{
+                    HStack(spacing: 18){
+                        ForEach(textArray.indices, id:\.self){ index in
+                            HStack{
+                                Circle()
+                                    .fill(.gray)
+                                    .frame(width: 35, height: 35)
+                                    .shadow(color: .white, radius: 5, x: -5, y: -5)
+                                    .shadow(color: .black, radius: 5, x: 5, y: 5)
+                                    .overlay{
+                                            if selectedItem == textArray[index]{
+                                                Circle()
+                                                    .fill(.gray)
+                                                    .frame(width: 28, height: 28)
+                                                    .shadow(color: .black.opacity(0.14), radius: 1, x: -2, y: -2)
+                                                    .shadow(color: .white, radius: 1, x: 1, y: 1)
+                                            }else{
+                                                Circle()
+                                                    .fill(.gray)
+                                                    .frame(width: 28, height: 28)
+                                                    .shadow(color: .white, radius: 2, x: -2, y: -2)
+                                                    .shadow(color: .black.opacity(0.5), radius: 2, x: 2, y: 2)
+                                            }
+                                    }
+                                    .onTapGesture {
+                                        withAnimation{
+                                            selectedItem = textArray[index]
+                                        }
+                                    }
+                                Text(textArray[index])
+                                    .foregroundColor(selectedItem == textArray[index] ? .white : .black.opacity(0.5))
+                                    .font(selectedItem == textArray[index] ? .system(.title2).bold() : .system(.title2))
+                            }
+                        }
+                    }
+                }
+        }
+    }
+}
 
 struct CustomSlider: View {
     
