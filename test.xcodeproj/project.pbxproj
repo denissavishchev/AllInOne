@@ -25,6 +25,9 @@
 		F2C2F8842CC2D46000D4AC7D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2C2F8832CC2D46000D4AC7D /* Preview Assets.xcassets */; };
 		F2C2F88C2CC3B16D00D4AC7D /* CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C2F88B2CC3B16D00D4AC7D /* CustomColors.swift */; };
 		F2C2F88E2CC4D49800D4AC7D /* PacmanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C2F88D2CC4D49800D4AC7D /* PacmanView.swift */; };
+		F2DF50A82D02140900A23361 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DF50A72D02140900A23361 /* Model.swift */; };
+		F2DF50AA2D02142700A23361 /* CarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DF50A92D02142700A23361 /* CarViewModel.swift */; };
+		F2DF50AC2D0215EB00A23361 /* CarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DF50AB2D0215EB00A23361 /* CarView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +50,9 @@
 		F2C2F8832CC2D46000D4AC7D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F2C2F88B2CC3B16D00D4AC7D /* CustomColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColors.swift; sourceTree = "<group>"; };
 		F2C2F88D2CC4D49800D4AC7D /* PacmanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacmanView.swift; sourceTree = "<group>"; };
+		F2DF50A72D02140900A23361 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		F2DF50A92D02142700A23361 /* CarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarViewModel.swift; sourceTree = "<group>"; };
+		F2DF50AB2D0215EB00A23361 /* CarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +128,7 @@
 		F2C2F87B2CC2D45E00D4AC7D /* test */ = {
 			isa = PBXGroup;
 			children = (
+				F2DF50A62D0213E600A23361 /* MVVM */,
 				F29154C22CD00CB4002B8534 /* Service */,
 				F255339D2CC9A4D800ED83D4 /* Model */,
 				F29154B92CCE82DE002B8534 /* ViewModel */,
@@ -147,6 +154,16 @@
 				F2C2F88B2CC3B16D00D4AC7D /* CustomColors.swift */,
 			);
 			path = Colors;
+			sourceTree = "<group>";
+		};
+		F2DF50A62D0213E600A23361 /* MVVM */ = {
+			isa = PBXGroup;
+			children = (
+				F2DF50A72D02140900A23361 /* Model.swift */,
+				F2DF50A92D02142700A23361 /* CarViewModel.swift */,
+				F2DF50AB2D0215EB00A23361 /* CarView.swift */,
+			);
+			path = MVVM;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -225,10 +242,13 @@
 				F2C2F87F2CC2D45E00D4AC7D /* ContentView.swift in Sources */,
 				F2C2F88C2CC3B16D00D4AC7D /* CustomColors.swift in Sources */,
 				F25533A12CCA984600ED83D4 /* ListView.swift in Sources */,
+				F2DF50AC2D0215EB00A23361 /* CarView.swift in Sources */,
 				F29154B52CCE4B29002B8534 /* RatingPicker.swift in Sources */,
 				F291558F2CDD098E002B8534 /* CustomCircularBar.swift in Sources */,
 				F29154BF2CD00112002B8534 /* Product.swift in Sources */,
 				F29154C12CD00B6B002B8534 /* ModelView.swift in Sources */,
+				F2DF50AA2D02142700A23361 /* CarViewModel.swift in Sources */,
+				F2DF50A82D02140900A23361 /* Model.swift in Sources */,
 				F255339F2CC9A4F600ED83D4 /* Food.swift in Sources */,
 				F2C2F87D2CC2D45E00D4AC7D /* testApp.swift in Sources */,
 				F25533A32CCAA67600ED83D4 /* SelectedList.swift in Sources */,

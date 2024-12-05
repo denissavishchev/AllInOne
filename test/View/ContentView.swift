@@ -2,7 +2,7 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State var selectedTab = "Settings"
+    @State var selectedTab = "Home"
     let tabs = ["Globe", "Home", "Settings", "Profile"]
     
     init() {
@@ -14,11 +14,15 @@ struct ContentView: View {
             TabView(selection: $selectedTab){
                 FirstView()
                     .tag("Globe")
-                NavigationStack{
-                    ProductView()
-                        .navigationDestination(for: Product.self){ product in
-                        ProductDetailView(product: product)
-                        }
+                VStack{
+                    NavigationStack{
+                        ProductView()
+                            .navigationDestination(for: Product.self){ product in
+                            ProductDetailView(product: product)
+                            }
+                    }
+                    .frame(height: 200)
+                    CarView()
                 }
                 .tag("Home")
                 SettingsView()
